@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/Todolist v1 Starting Styles/styles.css">
+</head>
+<body>
+
+    <!--Title of the List-->
+    <div class="box" id="heading">
+        <h1><%= listTitle %> </h1>
+    </div>
+
+    <div class="box">
+        <div class="item">
+            <p style="font-weight: 1000; font-size: large; color: #8e5be6;">To-Do-List</p>
+        </div>
+
+        <% for(var i=0;i<newListItems.length;i++) {%>
+        <form action="/delete" method="POST">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=newListItems[i]._id%>" onchange="this.form.submit()">
+                <p><%= newListItems[i].name %> </p>
+            </div>
+            <input type="hidden" name="listTitle" value="<%= listTitle %>">
+        </form>
+        <% } %>
+
+        <form action="/" method="POST" class="item">
+            <input type="text" name="newItem" placeholder="Enter new Item" autocomplete="off">
+            <button type="submit" name="Button" value="<%= listTitle %>"> + </button>
+        </form>
+    </div>
+        
+</body>
+</html>
