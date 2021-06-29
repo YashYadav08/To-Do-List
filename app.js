@@ -136,12 +136,12 @@ app.post("/delete", function(req,res){
     
 });
 
-let port = process.env.PORT;
-//if(port==NULL || port==""){
-  //  port=8000;
-//}
 
-app.listen(process.env.PORT, function()
-{
-    console.log("Server is live!");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+ 
+app.listen(port, function() {
+  console.log("Server is live");
 });
