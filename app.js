@@ -136,7 +136,12 @@ app.post("/delete", function(req,res){
     
 });
 
-app.listen(8000, function()
+let port = process.env.PORT;
+if(port==NULL || port==""){
+    port=8000;
+}
+
+app.listen(port, function()
 {
-    console.log("Server is live on port 8000!");
+    console.log("Server is live!");
 });
