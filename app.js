@@ -22,7 +22,7 @@ const itemsSchema = {   //Schema for our Database
 
 const Item = mongoose.model("Item", itemsSchema);   //model based on the itemsSchema
 
-//making a few documents for the list(documents are same as rows in sql)
+//making a few documents for the list(documents are same as rows in sql)(Here the To-Do-List items/tasks)
 const item1 = new Item({
     name: "This is Task-1: Go and Sleep"
 });
@@ -33,7 +33,7 @@ const item3 = new Item({
     name: "Get back to studying after eating some food."
 });
 
-const defaultItems = [item1, item2, item3];
+const defaultItems = [item1, item2, item3]; //default items array
 
 const listSchema = {
     name: String,
@@ -127,7 +127,7 @@ app.post("/delete", function(req,res){
             }
         }); 
     }else{
-        List.findOneAndUpdate({name:listName}, {$pull:{items:{_id: checkedItemId}}}, function(err, reslist){
+        List.findOneAndUpdate({name:listName}, {$pull:{items:{_id: checkedItemId}}}, function(err, reslist){    //in list model.find__->first argument is list, second update, function
             if(!err){
                 res.redirect("/"+listName);
             }
