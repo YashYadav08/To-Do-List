@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require('dotenv').config();
 //var items = [];
 
 const app= express();
@@ -13,7 +14,7 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin_yash:yash2702@cluster0.oir2y.mongodb.net/toDoListDB", {useNewUrlParser:true,useUnifiedTopology:true, useFindAndModify:false});
+mongoose.connect(process.env.Mongo_Url, {useNewUrlParser:true,useUnifiedTopology:true, useFindAndModify:false});
 
 //Schema->model->document (document = rows of sql, model = table, schema is the format)
 const itemsSchema = {   //Schema for our Database
